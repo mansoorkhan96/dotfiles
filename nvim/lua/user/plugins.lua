@@ -195,6 +195,14 @@ use({
   end,
 })
 
+-- Add a dashboard.
+use({
+  'glepnir/dashboard-nvim',
+  config = function()
+    require('user/plugins/dashboard-nvim')
+  end
+})
+
 -- Git integration.
 use({
   'lewis6991/gitsigns.nvim',
@@ -207,6 +215,27 @@ use({
     vim.keymap.set('n', 'gp', ':Gitsigns preview_hunk<CR>')
     vim.keymap.set('n', 'gb', ':Gitsigns blame_line<CR>')
   end,
+})
+
+-- Git commands.
+use({
+  'tpope/vim-fugitive',
+  requires = 'tpope/vim-rhubarb',
+})
+
+--- Floating terminal.
+use({
+  'voldikss/vim-floaterm',
+  config = function()
+    vim.g.floaterm_width = 0.8
+    vim.g.floaterm_height = 0.8
+    vim.keymap.set('n', '<leader>t', ':FloatermToggle<CR>')
+    vim.keymap.set('t', '<leader>t', '<C-\\><C-n>:FloatermToggle<CR>')
+    vim.cmd([[
+      highlight link Floaterm CursorLine
+      highlight link FloatermBorder CursorLineBg
+    ]])
+  end
 })
 
 -- Automatically set up your configuration after cloning packer.nvim
