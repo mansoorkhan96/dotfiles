@@ -1,24 +1,46 @@
 local dashboard = require('dashboard')
 
-dashboard.custom_header = {
-  '',
-  ' ███╗   ███╗ █████╗ ███╗   ██╗███████╗ ██████╗  ██████╗ ██████╗  ',
-  ' ████╗ ████║██╔══██╗████╗  ██║██╔════╝██╔═══██╗██╔═══██╗██╔══██╗ ',
-  ' ██╔████╔██║███████║██╔██╗ ██║███████╗██║   ██║██║   ██║██████╔╝ ',
-  ' ██║╚██╔╝██║██╔══██║██║╚██╗██║╚════██║██║   ██║██║   ██║██╔══██╗ ',
-  ' ██║ ╚═╝ ██║██║  ██║██║ ╚████║███████║╚██████╔╝╚██████╔╝██║  ██║ ',
-  ' ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝ ',
-  '',
-}
-
-dashboard.custom_center = {
-  { icon = '  ', desc = 'New file', action = 'enew' },
-  { icon = '  ', shortcut = 'SPC f', desc = 'Find file', action = 'Telescope find_files' },
-  { icon = '  ', shortcut = 'SPC h', desc = 'Recent files', action = 'Telescope oldfiles' },
-  { icon = '  ', shortcut = 'SPC g', desc = 'Find Word', action = 'Telescope live_grep' },
-}
-
-dashboard.custom_footer = { '' }
+dashboard.setup({
+  -- theme = 'doom',
+  config = {
+    header = {
+      "",
+      "",
+      " ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗",
+      " ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║",
+      " ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║",
+      " ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║",
+      " ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║",
+      " ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝",
+      "",
+      " [ TIP: To exit Neovim, just power off your computer. ] ",
+      "",
+    },    
+    packages = { enable = false },
+    shortcut = {
+      { desc = ' New File', group = '@property', action = 'enew', key = 'e' },
+      {
+        desc = ' Find File',
+        group = 'Label',
+        action = 'Telescope find_files',
+        key = 'f',
+      },
+      {
+        desc = ' Recent Files',
+        group = 'DiagnosticHint',
+        action = 'Telescope oldfiles',
+        key = 'r',
+      },
+      {
+        desc = ' Dotfiles',
+        group = 'Number',
+        action = 'Telescope dotfiles',
+        key = 'd',
+      },
+    },
+    footer = {},
+  }
+})
 
 vim.api.nvim_set_hl(0, 'DashboardHeader', { fg = '#6272a4' })
 vim.api.nvim_set_hl(0, 'DashboardCenter', { fg = '#f8f8f2' })
