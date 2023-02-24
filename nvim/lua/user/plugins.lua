@@ -231,8 +231,8 @@ use({
   config = function()
     vim.g.floaterm_width = 0.8
     vim.g.floaterm_height = 0.8
-    vim.keymap.set('n', '<F1>', ':FloatermToggle<CR>')
-    vim.keymap.set('t', '<F1>', '<C-\\><C-n>:FloatermToggle<CR>')
+    vim.keymap.set('n', '<Leader>tt', ':FloatermToggle<CR>')
+    vim.keymap.set('t', '<Leader>tt', '<C-\\><C-n>:FloatermToggle<CR>')
     vim.cmd([[
       highlight link Floaterm CursorLine
       highlight link FloatermBorder CursorLineBg
@@ -297,6 +297,25 @@ use({
     vim.keymap.set('n', '<Leader>pn', ':PhpactorClassNew<CR>')
   end,
 })
+
+-- Project Configuration.
+use({
+  'tpope/vim-projectionist',
+  requires = 'tpope/vim-dispatch',
+  config = function()
+    require('user/plugins/projectionist')
+  end,
+})
+
+-- Testing helper
+use({
+  'vim-test/vim-test',
+  config = function()
+    require('user/plugins/vim-test')
+  end,
+})
+
+use ('mg979/vim-visual-multi')
 
 -- Automatically set up your configuration after cloning packer.nvim
 -- Put this at the end after all plugins
